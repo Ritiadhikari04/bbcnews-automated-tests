@@ -11,12 +11,14 @@ Before you run you need to set some program arguments
 `-Ddriverpath=chromedriverpath`
 `-Dusername=your BBC News Account Username`
 `-Dpassword=BBC Account Password`
-`-Dregion=(i.e England, Scotland etc)` {for opening news by region test scenario}
+`-Dregion=(i.e England, Scotland etc)` {for opening news by region test scenario, default is England}
+`-Dpostcode=(i.e postcode for local news)` {default is CB1}
 
 ## Test Scenarios Covered
 Currently this project covers below test cases
 - Search News Topic On the Main Page
 - Navigation to SignIn Page, User SignIn/SignOut
+- Search Local News By PostCode
 - Selecting News Based on the `region` passed as the parameter to the program
 
 ## Parallel Execution

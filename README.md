@@ -25,4 +25,4 @@ Project covers below test scenarios:
 Project is using `TestNg` to run `test scenarios` parallely
 
 ## Test Report
-Test report named `bbc-news-automated-tests-report.html` is generated in the output folder upon running the test cases. This report can be accessed to view the pass or fail steps and to analyze failures if any.
+Test report named `bbc-news-automated-tests-report.html` is generated in project root folder upon running the test cases. This report can be accessed to view the passed or failed steps.

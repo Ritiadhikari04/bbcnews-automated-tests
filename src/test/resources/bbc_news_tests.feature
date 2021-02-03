@@ -22,3 +22,8 @@ Feature: BBC News Automated Tests
     When Open news of selected Region
     Then all news are of selected region
     
+  @SearchLocalNewsByPostcode
+  Scenario: News By PostCode 
+    When Open Local News
+    Then Search By Entering PostCode
+    Then Set Radius and See Search Results

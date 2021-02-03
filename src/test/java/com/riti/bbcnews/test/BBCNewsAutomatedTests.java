@@ -3,8 +3,10 @@ package com.riti.bbcnews.test;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -24,6 +26,7 @@ public class BBCNewsAutomatedTests {
 	private WebDriverWait wait;
 	private String username = "";
 	private String password = "";
+	private String postcode = "CB1";
 	private String region = "England";
 
 	@Before
@@ -34,7 +37,10 @@ public class BBCNewsAutomatedTests {
 		password = System.getProperty("password");
 		if (System.getProperty("region") != null && !"".equals(System.getProperty("region")))
 			region = System.getProperty("region");
-		System.out.println("[username=" + username + ", password=" + password + ", region=" + region + "]");
+		if (System.getProperty("postcode") != null && !"".equals(System.getProperty("postcode")))
+			postcode = System.getProperty("postcode");
+		System.out.println("[username=" + username + ", password=" + password + ", postcode=" + postcode + ", region="
+				+ region + "]");
 	}
 
 	public WebDriver getWebDriver() {
@@ -148,6 +154,37 @@ public class BBCNewsAutomatedTests {
 
 		Assert.assertEquals(regionNewsList.isEmpty(), false);
 		System.out.println("Found News for selected Region (" + region + ")");
+	}
+
+	@When("Open Local News")
+	public void gotToLocalNews() {
+		WebElement localNews = getWebDriverWait()
+				.until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText("Local News")));
+		Assert.assertEquals(localNews.isDisplayed(), true);
+		localNews.click();
+	}
+
+	@Then("Search By Entering PostCode")
+	public void searchLocalNewsByPostCode() {
+		getWebDriverWait().until(ExpectedConditions.invisibilityOfElementLocated(By.id("ls-c-search__input-label")));
+		WebElement inputElement = getWebDriver().findElement(By.id("ls-c-search__input-label"));
+		Actions action = new Actions(getWebDriver());
+		action.moveToElement(inputElement);
+
+		JavascriptExecutor javascript = (JavascriptExecutor) getWebDriver();
+		javascript.executeScript("let input = document.getElementById('ls-c-search__input-label');\n input.value='"
+				+ postcode
+				+ "';\n let searchButton = document.getElementsByClassName('ls-c-search__submit')[0];\n searchButton.click();");
+		System.out.println("Search Started");
+	}
+
+	@Then("Set Radius and See Search Results")
+	public void setLocalNewsByPostCodeRadius() {
+		WebElement fiveMileRadiusLink = getWebDriverWait()
+				.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("5")));
+		Assert.assertEquals(fiveMileRadiusLink.isDisplayed(), true);
+		fiveMileRadiusLink.click();
+		System.out.println("5 Mile Radius is selected, Local News is Visible");
 	}
 
 	@After

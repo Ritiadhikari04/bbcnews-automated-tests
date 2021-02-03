@@ -14,12 +14,15 @@ Before you run you need to set some program arguments
 `-Dregion=(i.e England, Scotland etc)` {for opening news by region test scenario, default is England}
 `-Dpostcode=(i.e postcode for local news)` {default is CB1}
 
-## Test Scenarios Covered
-Currently this project covers below test cases
-- Search News Topic On the Main Page
-- Navigation to SignIn Page, User SignIn/SignOut
-- Search Local News By PostCode
-- Selecting News Based on the `region` passed as the parameter to the program
+## Test Cases
+Project covers below test cases:
+1. Search News Topic On the Main Page.
+2. Navigation to SignIn Page and User SignIn/SignOut.
+3. Search Local News By PostCode.
+4. Selecting News Based on the `region` passed as the parameter to the program.
 
 ## Parallel Execution
 Project is using `TestNg` to run `test scenarios` parallely
+
+## Test Report
+Test report named "bbc-news-automated-tests-report.html" is generated in the output folder upon running the test cases. This report can be accessed to view the pass or fail steps and to analyze failures if any.

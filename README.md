@@ -14,6 +14,9 @@ Before you run, set program arguments required for testing.
 `-Dregion=(i.e England, Scotland etc)` {for news by region test scenario, default is England}
 `-Dpostcode=(i.e postcode for local news)` {default is CB1}
 
+## Running in headless mode
+By default all tests runs on browser, if you wish to run tests in headless mode pass programs arguement `-Dheadless=true`
+
 ## Test Scenarios
 Project covers below test scenarios:
 1. Search News Topic On the Main Page.

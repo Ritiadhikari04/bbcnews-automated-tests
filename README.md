@@ -7,8 +7,8 @@ BBC News Website Automated Tests using Java, Cucumber, TestNg and Selenium follo
 ## Run
 TestRunnerClass is available at `com/riti/bbcnews/test/BBCNewsAutomatedTestsRunner.java`
 Before you run, set program arguments required for testing.
-`-Ddriver=chrome`
-`-Ddriverpath=chromedriverpath`
+`-Ddriver=`{i.e chrome or firefox}
+`-Ddriverpath=`{i.e broswer driver path}
 `-Dusername=your BBC News Account Username`
 `-Dpassword=BBC Account Password`
 `-Dregion=(i.e England, Scotland etc)` {for news by region test scenario, default is England}
